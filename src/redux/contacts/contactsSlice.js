@@ -16,7 +16,16 @@ const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: { items: [], isLoading: false, error: null },
+  initialState: {
+    items: [
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    isLoading: false,
+    error: null,
+  },
   extraReducers: builder =>
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -37,33 +46,6 @@ export const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       }),
-  // extraReducers: {
-
-  //   [fetchContacts.pending]: handlePending,
-  //   [fetchContacts.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items = action.payload;
-  //   },
-  //   [fetchContacts.rejected]: handleRejected,
-  //   [addContactItem.pending]: handlePending,
-  //   [addContactItem.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     state.items.unshift(action.payload);
-  //   },
-  //   [addContactItem.rejected]: handleRejected,
-  //   [deleteContactItem.pending]: handlePending,
-  //   [deleteContactItem.fulfilled](state, action) {
-  //     state.isLoading = false;
-  //     state.error = null;
-  //     const index = state.items.findIndex(
-  //       contact => contact.id === action.payload.id
-  //     );
-  //     state.items.splice(index, 1);
-  //   },
-  //   [deleteContactItem.rejected]: handleRejected,
-  // },
 });
 
 export const contactsReducer = contactsSlice.reducer;

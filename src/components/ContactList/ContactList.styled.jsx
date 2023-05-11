@@ -12,7 +12,7 @@ export const Item = styled.li`
 `;
 
 export const Button = styled.button`
-  padding: 7px;
+  padding: 5px 7px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
