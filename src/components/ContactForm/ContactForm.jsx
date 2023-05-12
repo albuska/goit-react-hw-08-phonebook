@@ -35,9 +35,12 @@ const ContactForm = () => {
 const includeItem = contacts.find((item => {
       return item.name.toLowerCase() === name.toLowerCase();
 }))
-    includeItem ? alert(`${name} is already in contacts`) : 
+    if (includeItem) {
+      toast.error(`${name} is already in contacts`)
+    } else {
       dispatch(addContactItem({ name, number, id: nanoid() }));
     toast.success(`Create new contact ${name}!`);
+    }
   };
 
   return (
