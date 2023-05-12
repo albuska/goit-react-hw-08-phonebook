@@ -4,6 +4,8 @@ import { addContactItem } from '../../redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import { selectItems } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch(); 
@@ -34,7 +36,8 @@ const includeItem = contacts.find((item => {
       return item.name.toLowerCase() === name.toLowerCase();
 }))
     includeItem ? alert(`${name} is already in contacts`) : 
-    dispatch(addContactItem({name, number, id: nanoid()}));
+      dispatch(addContactItem({ name, number, id: nanoid() }));
+    toast.success(`Create new contact ${name}!`);
   };
 
   return (

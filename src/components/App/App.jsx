@@ -9,6 +9,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { ToastContainer} from 'react-toastify';
 
 const Home = lazy(() => import('../../pages/Home')); 
 const Register = lazy(() => import('../../pages/Register'));
@@ -36,6 +37,7 @@ const App = () => {
       </Routes>
       <GlobalStyle/>
       </Suspense>
+      <ToastContainer autoClose={3000} theme="colored"/>
     </ContainerApp>  
   );
 };

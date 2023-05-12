@@ -2,8 +2,10 @@ import { useDispatch } from "react-redux";
 import { Form, Label, Input, Button } from "./LoginForm.styled"
 import { logIn } from "redux/auth/operations";
 
+
 export const LoginForm = () => {
-const dispatch = useDispatch(); 
+    const dispatch = useDispatch();  
+
     const handleSubmit = event => {
         event.preventDefault(); 
         const form = event.currentTarget;  
@@ -11,6 +13,7 @@ const dispatch = useDispatch();
             email: form.elements.email.value,
             password: form.elements.password.value,
         })); 
+        
         form.reset(); 
 }
 

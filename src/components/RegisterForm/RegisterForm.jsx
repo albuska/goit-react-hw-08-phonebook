@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Form, Label, Input, Button } from "./RegisterForm.styled"
 import { register } from "redux/auth/operations";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterForm = () => {
     const dispatch = useDispatch(); 
@@ -13,6 +15,7 @@ export const RegisterForm = () => {
             email: form.elements.email.value,
             password: form.elements.password.value,
         })); 
+        toast.success('Registration was successful');
         form.reset(); 
     }
 
