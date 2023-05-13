@@ -5,7 +5,7 @@ export const Form = styled.form`
   padding: 10px;
   margin: 0 auto;
   margin-top: 30px;
-  border: 1px solid #00d4ff;
+  /* border: 1px solid #00d4ff; */
 `;
 
 export const Label = styled.label`
@@ -20,6 +20,7 @@ export const Input = styled.input`
   margin-top: 5px;
   outline: none;
   height: 30px;
+  border-radius: 5px;
 
   :focus {
     border-color: #00d4ff;

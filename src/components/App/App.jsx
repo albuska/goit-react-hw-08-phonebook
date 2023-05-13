@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
-import { Loader } from '../Loader';
+import { lazy, useEffect } from 'react';
 import SharedLayout from '../SharedLayout'; 
 import { GlobalStyle } from 'components/GlobalStyle';
 import { ContainerApp } from './App.styled';
@@ -10,6 +9,7 @@ import { selectIsRefreshing } from 'redux/auth/selectors';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { ToastContainer} from 'react-toastify';
+import { VideoBg } from 'components/AudioBg/AudioBg';
 
 const Home = lazy(() => import('../../pages/Home')); 
 const Register = lazy(() => import('../../pages/Register'));
@@ -25,20 +25,22 @@ const App = () => {
   }, [dispatch])
 
   return isRefreshing ? (<b>Refreshing user...</b>) : (
-    <ContainerApp>
-<Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path='/' element={ <SharedLayout/>}>
-          <Route index element={<Home />} /> 
-          <Route path='/register' element={<RestrictedRoute redirectTo='/contacts' component={<Register />}/>}/>
-          <Route path='/login' element={<RestrictedRoute redirectTo='/contacts' component={<LogIn />}/>}/>
-          <Route path='/contacts' element={<PrivateRoute redirectTo='/login' component={<Contacts/>}/> } />
-        </Route>   
-      </Routes>
-      <GlobalStyle/>
-      </Suspense>
-      <ToastContainer autoClose={3000} theme="colored"/>
-    </ContainerApp>  
+    <>
+      <VideoBg/>
+        <ContainerApp>
+          <Routes>
+            <Route path='/' element={ <SharedLayout/>}>
+              <Route index element={<Home />} /> 
+              <Route path='/register' element={<RestrictedRoute redirectTo='/contacts' component={<Register />}/>}/>
+              <Route path='/login' element={<RestrictedRoute redirectTo='/contacts' component={<LogIn />}/>}/>
+              <Route path='/contacts' element={<PrivateRoute redirectTo='/login' component={<Contacts/>}/> } />
+            </Route>   
+          </Routes>
+          <GlobalStyle/>
+          <ToastContainer autoClose={3000} theme="colored"/>
+        </ContainerApp>  
+        </>
+    
   );
 };
 
