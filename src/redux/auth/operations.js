@@ -14,12 +14,11 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectedWithValue }) => {
-    console.log(credentials)
     try {
       const response = await axios.post('/users/signup', credentials);
-      console.log(response)
+
       setAuthHeader(response.data.token);
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return rejectedWithValue(error.message);
