@@ -6,6 +6,7 @@ const styles = {
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
+        marginTop: '30px',
     },
     title: {
          color: '#ffffff',
